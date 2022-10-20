@@ -1,7 +1,7 @@
 @extends('layouts.header')
 @section('content')
     <div class="container">
-        <div class="card bg-dark text-white">
+        <div class="card">
             <img src="{{ asset('assets/images/product/1.png') }}" class="card-img" alt="...">
             <div class="card-img-overlay">
                 <h5 class="card-title">Card title</h5>
