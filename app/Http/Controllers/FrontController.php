@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class GoodsController extends Controller
+class FrontController extends Controller
 {
+    public function homepage() {
+        return view('main.index');
+    }
+
     public function GoodsView(){
         return view('main.index');
     }
