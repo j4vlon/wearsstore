@@ -5,11 +5,10 @@ use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\AdminController;
+
 use \App\Http\Controllers\FrontController;
 use \App\Http\Controllers\CategoryController;
 use \App\Http\Controllers\ProductsController;
-use \App\Http\Controllers\GoodsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +20,9 @@ use \App\Http\Controllers\GoodsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::prefix('admin')->group(function (){
-    Route::get('/', [DashboardController::class, 'index']);
+    Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::resource('/categories', AdminCategoryController::class);
     Route::resource('/products', AdminCategoryController::class);
     Route::resource('/orders', AdminCategoryController::class);
@@ -52,8 +51,8 @@ Route::get('/checkout/success', [CheckoutController::class, 'success']);
     Route::get('/checkout/success', 'SuccessCheckoutView');
 });*/
 
-Route::controller(AdminController::class)->group(function() {
-    Route::get('/admin', 'AdminView');
-    Route::post('/addproduct', 'AddProduct')->name('addproduct');
-});
+//Route::controller(AdminController::class)->group(function() {
+//    Route::get('/admin', 'AdminView');
+//    Route::post('/addproduct', 'AddProduct')->name('addproduct');
+//});
 
