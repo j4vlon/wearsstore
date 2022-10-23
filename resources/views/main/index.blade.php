@@ -1,7 +1,8 @@
-@extends('layouts.header')
+@extends('admin._layout')
 @section('content')
     <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({{asset('assets/images/2.jpg')}}) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__area"
+        style="background: rgba(0, 0, 0, 0) url({{ asset('assets/images/2.jpg') }}) no-repeat scroll center center / cover ;">
         <div class="ht__bradcaump__wrap">
             <div class="container">
                 <div class="row">
@@ -98,11 +99,16 @@
                                     <div class="single__filter">
                                         <h2>Color</h2>
                                         <ul class="filter__list sidebar__list">
-                                            <li class="black"><a href="#"><i class="zmdi zmdi-circle"></i>Black</a></li>
-                                            <li class="blue"><a href="#"><i class="zmdi zmdi-circle"></i>Blue</a></li>
-                                            <li class="brown"><a href="#"><i class="zmdi zmdi-circle"></i>Brown</a></li>
-                                            <li class="red"><a href="#"><i class="zmdi zmdi-circle"></i>Red</a></li>
-                                            <li class="orange"><a href="#"><i class="zmdi zmdi-circle"></i>Orange</a></li>
+                                            <li class="black"><a href="#"><i class="zmdi zmdi-circle"></i>Black</a>
+                                            </li>
+                                            <li class="blue"><a href="#"><i class="zmdi zmdi-circle"></i>Blue</a>
+                                            </li>
+                                            <li class="brown"><a href="#"><i class="zmdi zmdi-circle"></i>Brown</a>
+                                            </li>
+                                            <li class="red"><a href="#"><i class="zmdi zmdi-circle"></i>Red</a>
+                                            </li>
+                                            <li class="orange"><a href="#"><i class="zmdi zmdi-circle"></i>Orange</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -114,60 +120,65 @@
                 <!-- End Filter Menu -->
                 <!-- End Product MEnu -->
                 <div class="row product__list another-product-style">
-                        <!-- Start Single Product -->
-                        <div class="col-md-3 single__pro col-lg-3 col-sm-4 col-xs-12 cat--2">
-                            <div class="product foo">
-                                <div class="product__inner">
-                                    <div class="pro__thumb">
-                                        <a href="#">
-                                            <img src="{{ asset('assets/images/product/1.png') }}" alt="product images">
-                                        </a>
-                                    </div>
-                                    <div class="product__hover__info">
-                                        <ul class="product__action">
-                                            <li><a class="quick-view detail-link" href="/checkout/"><i class="fa-solid fa-plus"></i></a></li>
-                                            <li><a title="Add TO Cart" href=""><i class="fa-solid fa-cart-shopping"></i></a></li>
-                                            <li><a title="Wishlist" href=""><i class="fa-solid fa-heart"></i></a></li>
-                                        </ul>
-                                    </div>
+                    <!-- Start Single Product -->
+                    <div class="col-md-3 single__pro col-lg-3 col-sm-4 col-xs-12 cat--2">
+                        <div class="product foo">
+                            <div class="product__inner">
+                                <div class="pro__thumb">
+                                    <a href="#">
+                                        <img src="{{ asset('assets/images/product/1.png') }}" alt="product images">
+                                    </a>
                                 </div>
-                                <div class="product__details">
-                                    <h2><a href="product-details.html">Miliraty Backpack</a></h2>
-                                    <ul class="product__price">
-                                        <li class="old__price">$16.00</li>
-                                        <li class="new__price">$10.00</li>
+                                <div class="product__hover__info">
+                                    <ul class="product__action">
+                                        <li><a class="quick-view detail-link" href="/checkout/"><i
+                                                    class="fa-solid fa-plus"></i></a></li>
+                                        <li><a title="Add TO Cart" href=""><i
+                                                    class="fa-solid fa-cart-shopping"></i></a></li>
+                                        <li><a title="Wishlist" href=""><i class="fa-solid fa-heart"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
+                            <div class="product__details">
+                                <h2><a href="product-details.html">Miliraty Backpack</a></h2>
+                                <ul class="product__price">
+                                    <li class="old__price">$16.00</li>
+                                    <li class="new__price">$10.00</li>
+                                </ul>
+                            </div>
                         </div>
-                        <!-- End Single Product -->
-                        <!-- Start Single Product -->
-                        <div class="col-md-3 single__pro col-lg-3 col-sm-4 col-xs-12 cat--2">
-                            <div class="product foo">
-                                <div class="product__inner">
-                                    <div class="pro__thumb">
-                                        <a href="#">
-                                            <img src="{{ asset('assets/images/product/1.png') }}" alt="product images">
-                                        </a>
-                                    </div>
-                                    <div class="product__hover__info">
-                                        <ul class="product__action">
-                                            <li><a class="quick-view modal-view detail-link" href="/checkout"><i class="fa-solid fa-plus"></i></a></li>
-                                            <li><a title="Add TO Cart" href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                                            <li><a title="Wishlist" href="wishlist.html"><i class="fa-solid fa-heart"></i></a></li>
-                                        </ul>
-                                    </div>
+                    </div>
+                    <!-- End Single Product -->
+                    <!-- Start Single Product -->
+                    <div class="col-md-3 single__pro col-lg-3 col-sm-4 col-xs-12 cat--2">
+                        <div class="product foo">
+                            <div class="product__inner">
+                                <div class="pro__thumb">
+                                    <a href="#">
+                                        <img src="{{ asset('assets/images/product/1.png') }}" alt="product images">
+                                    </a>
                                 </div>
-                                <div class="product__details">
-                                    <h2><a href="product-details.html">Saved Wines Corkscrew</a></h2>
-                                    <ul class="product__price">
-                                        <li class="old__price">$16.00</li>
-                                        <li class="new__price">$10.00</li>
+                                <div class="product__hover__info">
+                                    <ul class="product__action">
+                                        <li><a class="quick-view modal-view detail-link" href="/checkout"><i
+                                                    class="fa-solid fa-plus"></i></a></li>
+                                        <li><a title="Add TO Cart" href="cart.html"><i
+                                                    class="fa-solid fa-cart-shopping"></i></a></li>
+                                        <li><a title="Wishlist" href="wishlist.html"><i
+                                                    class="fa-solid fa-heart"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
+                            <div class="product__details">
+                                <h2><a href="product-details.html">Saved Wines Corkscrew</a></h2>
+                                <ul class="product__price">
+                                    <li class="old__price">$16.00</li>
+                                    <li class="new__price">$10.00</li>
+                                </ul>
+                            </div>
                         </div>
-                        <!-- End Single Product -->
+                    </div>
+                    <!-- End Single Product -->
                 </div>
                 <!-- Start Load More BTn -->
                 <div class="row mt--60">

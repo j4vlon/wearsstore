@@ -1,7 +1,8 @@
 @extends('admin._layout')
 @section('content')
     <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({{asset('assets/images/2.jpg')}}) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__area"
+        style="background: rgba(0, 0, 0, 0) url({{ asset('assets/images/2.jpg') }}) no-repeat scroll center center / cover ;">
         <div class="ht__bradcaump__wrap">
             <div class="container">
                 <div class="row">
@@ -29,23 +30,26 @@
                         <div class="contact-form-wrap">
                             <div class="contact-title">
                                 <h2 class="contact__title">Add goods</h2>
-                                @if(session()->has('success'))
+                                @if (session()->has('success'))
                                     <div class="alert alert-success" role="alert">
                                         {{ session()->get('success') }}
                                     </div>
                                 @endif
                             </div>
-                            <form action="{{ url('addproduct') }}" method="post" enctype="multipart/form-data">
+                            <form method="post" action="" enctype="multipart/form-data">
                                 @csrf
                                 <div class="single-contact-form">
                                     <div class="contact-box name">
-                                        <input type="text" name="name" placeholder="Product name" class="{{ $errors->has('name') ? 'is-invalid' : '' }}">
-                                        @if($errors->has('name'))
+                                        <input type="text" name="name" placeholder="Product name"
+                                            class="{{ $errors->has('name') ? 'is-invalid' : '' }}">
+                                        @if ($errors->has('name'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('name') }}
                                             </div>
                                         @endif
-                                        <select type="text" name="category" placeholder="Product category" class="{{ $errors->has('category') ? 'is-invalid' : '' }}" style="border: none;
+                                        <select type="text" name="category" placeholder="Product category"
+                                            class="{{ $errors->has('category') ? 'is-invalid' : '' }}"
+                                            style="border: none;
     border-bottom: 1px solid #c1c1c1;">
                                             <option disabled>Select category</option>
                                             <option value="furnitures">Furnitures</option>
@@ -53,7 +57,7 @@
                                             <option value="decoration">Decorations</option>
                                             <option value="accessories">Accessories</option>
                                         </select>
-                                        @if($errors->has('category'))
+                                        @if ($errors->has('category'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('category') }}
                                             </div>
@@ -62,8 +66,9 @@
                                 </div>
                                 <div class="single-contact-form">
                                     <div class="contact-box name">
-                                        <input type="text" name="price" placeholder="Product price" class="{{ $errors->has('price') ? 'is-invalid' : '' }}">
-                                        @if($errors->has('price'))
+                                        <input type="text" name="price" placeholder="Product price"
+                                            class="{{ $errors->has('price') ? 'is-invalid' : '' }}">
+                                        @if ($errors->has('price'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('price') }}
                                             </div>
@@ -72,8 +77,9 @@
                                 </div>
                                 <div class="single-contact-form">
                                     <div class="contact-box message">
-                                        <textarea name="description"  placeholder="Description of product" class="{{ $errors->has('description') ? 'is-invalid' : '' }}"></textarea>
-                                        @if($errors->has('description'))
+                                        <textarea name="description" placeholder="Description of product"
+                                            class="{{ $errors->has('description') ? 'is-invalid' : '' }}"></textarea>
+                                        @if ($errors->has('description'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('description') }}
                                             </div>
@@ -82,15 +88,18 @@
                                 </div>
                                 <div class="single-contact-form">
                                     <div class="contact-box message">
-                                        <input name="file" type="file"  placeholder="Description of product" style="margin-right: 50px" class="{{ $errors->has('file') ? 'is-invalid' : '' }}">
-                                        @if($errors->has('file'))
+                                        <input name="file_url" type="file" placeholder="Description of product"
+                                            style="margin-right: 50px"
+                                            class="{{ $errors->has('file') ? 'is-invalid' : '' }}">
+                                        @if ($errors->has('file_url'))
                                             <div class="invalid-feedback">
-                                                {{ $errors->first('file') }}
+                                                {{ $errors->first('file_url') }}
                                             </div>
                                         @endif
                                         <label for="status">Product are aviable</label>
-                                        <input type="checkbox" name="status" style="margin-left: 15px" class="{{ $errors->has('status') ? 'is-invalid' : '' }}">
-                                        @if($errors->has('status'))
+                                        <input type="checkbox" name="status" style="margin-left: 15px"
+                                            class="{{ $errors->has('status') ? 'is-invalid' : '' }}" >
+                                        @if ($errors->has('status'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('status') }}
                                             </div>
@@ -98,7 +107,7 @@
                                     </div>
                                 </div>
                                 <div class="contact-btn">
-                                    <button type="submit" class="fv-btn">Submit</button>
+                                    <input type="submit" class="fv-btn">
                                 </div>
                             </form>
                         </div>

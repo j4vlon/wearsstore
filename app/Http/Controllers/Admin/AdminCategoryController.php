@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Http\Requests\ProductRequest;
 
 class AdminCategoryController extends Controller
 {
@@ -14,7 +16,7 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.dashboard');
     }
 
     /**
@@ -24,7 +26,7 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +37,20 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $product = new Product();
+        $product->name = $request->input('name');
+        $product->category = $request->input('category');
+        $product->price = $request->input('price');
+        $product->description = $request->input('description');
+        if ($request->hasfile('file_url')) {
+            $path = $request->file_url->store('uploads', 'public');
+            $product->file_url = '/storage/' . $path;
+        }
+        $product->status = $request->input('status');
+        
+        $product->save();
+        return redirect()->back()->with('success', 'The product was successfully added');
     }
 
     /**

@@ -10,7 +10,7 @@
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- All css files are included here. -->
     <!-- Bootstrap fremwork main css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">

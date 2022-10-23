@@ -1,7 +1,8 @@
-@extends('layouts.header')
+@extends('admin._layout')
 @section('content')
     <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({{asset('assets/images/2.jpg')}}) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__area"
+        style="background: rgba(0, 0, 0, 0) url({{ asset('assets/images/2.jpg') }}) no-repeat scroll center center / cover ;">
         <div class="ht__bradcaump__wrap">
             <div class="container">
                 <div class="row">
@@ -40,66 +41,66 @@
                                         <button type="submit" class="fv-btn">SEND</button>
                                     </div>
                                 </div>
-{{--                                <div class="single-checkout-box">--}}
-{{--                                    <textarea name="message" placeholder="Message*"></textarea>--}}
-{{--                                </div>--}}
-{{--                                <div class="single-checkout-box select-option mt--40">--}}
-{{--                                    <select>--}}
-{{--                                        <option>Country*</option>--}}
-{{--                                        <option>Bangladesh</option>--}}
-{{--                                        <option>Bangladesh</option>--}}
-{{--                                        <option>Bangladesh</option>--}}
-{{--                                        <option>Bangladesh</option>--}}
-{{--                                    </select>--}}
-{{--                                    <input type="text" placeholder="Company Name*">--}}
-{{--                                </div>--}}
-{{--                                <div class="single-checkout-box">--}}
-{{--                                    <input type="email" placeholder="State*">--}}
-{{--                                    <input type="text" placeholder="Zip Code*">--}}
-{{--                                </div>--}}
-{{--                                <div class="single-checkout-box checkbox">--}}
-{{--                                    <input id="remind-me" type="checkbox">--}}
-{{--                                    <label for="remind-me"><span></span>Create a Account ?</label>--}}
-{{--                                </div>--}}
+                                {{--                                <div class="single-checkout-box"> --}}
+                                {{--                                    <textarea name="message" placeholder="Message*"></textarea> --}}
+                                {{--                                </div> --}}
+                                {{--                                <div class="single-checkout-box select-option mt--40"> --}}
+                                {{--                                    <select> --}}
+                                {{--                                        <option>Country*</option> --}}
+                                {{--                                        <option>Bangladesh</option> --}}
+                                {{--                                        <option>Bangladesh</option> --}}
+                                {{--                                        <option>Bangladesh</option> --}}
+                                {{--                                        <option>Bangladesh</option> --}}
+                                {{--                                    </select> --}}
+                                {{--                                    <input type="text" placeholder="Company Name*"> --}}
+                                {{--                                </div> --}}
+                                {{--                                <div class="single-checkout-box"> --}}
+                                {{--                                    <input type="email" placeholder="State*"> --}}
+                                {{--                                    <input type="text" placeholder="Zip Code*"> --}}
+                                {{--                                </div> --}}
+                                {{--                                <div class="single-checkout-box checkbox"> --}}
+                                {{--                                    <input id="remind-me" type="checkbox"> --}}
+                                {{--                                    <label for="remind-me"><span></span>Create a Account ?</label> --}}
+                                {{--                                </div> --}}
                             </div>
                         </div>
                         <!-- End Checkbox Area -->
                         <!-- Start Payment Box -->
-{{--                        <div class="payment-form">--}}
-{{--                            <h2 class="section-title-3">payment details</h2>--}}
-{{--                            <p>Lorem ipsum dolor sit amet, consectetur kgjhyt</p>--}}
-{{--                            <div class="payment-form-inner">--}}
-{{--                                <div class="single-checkout-box">--}}
-{{--                                    <input type="text" placeholder="Name on Card*">--}}
-{{--                                    <input type="text" placeholder="Card Number*">--}}
-{{--                                </div>--}}
-{{--                                <div class="single-checkout-box select-option">--}}
-{{--                                    <select>--}}
-{{--                                        <option>Date*</option>--}}
-{{--                                        <option>Date</option>--}}
-{{--                                        <option>Date</option>--}}
-{{--                                        <option>Date</option>--}}
-{{--                                        <option>Date</option>--}}
-{{--                                    </select>--}}
-{{--                                    <input type="text" placeholder="Security Code*">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="payment-form"> --}}
+                        {{--                            <h2 class="section-title-3">payment details</h2> --}}
+                        {{--                            <p>Lorem ipsum dolor sit amet, consectetur kgjhyt</p> --}}
+                        {{--                            <div class="payment-form-inner"> --}}
+                        {{--                                <div class="single-checkout-box"> --}}
+                        {{--                                    <input type="text" placeholder="Name on Card*"> --}}
+                        {{--                                    <input type="text" placeholder="Card Number*"> --}}
+                        {{--                                </div> --}}
+                        {{--                                <div class="single-checkout-box select-option"> --}}
+                        {{--                                    <select> --}}
+                        {{--                                        <option>Date*</option> --}}
+                        {{--                                        <option>Date</option> --}}
+                        {{--                                        <option>Date</option> --}}
+                        {{--                                        <option>Date</option> --}}
+                        {{--                                        <option>Date</option> --}}
+                        {{--                                    </select> --}}
+                        {{--                                    <input type="text" placeholder="Security Code*"> --}}
+                        {{--                                </div> --}}
+                        {{--                            </div> --}}
+                        {{--                        </div> --}}
                         <!-- End Payment Box -->
                         <!-- Start Payment Way -->
-{{--                        <div class="our-payment-sestem">--}}
-{{--                            <h2 class="section-title-3">We  Accept :</h2>--}}
-{{--                            <ul class="payment-menu">--}}
-{{--                                <li><a href="#"><img src="images/payment/1.jpg" alt="payment-img"></a></li>--}}
-{{--                                <li><a href="#"><img src="images/payment/2.jpg" alt="payment-img"></a></li>--}}
-{{--                                <li><a href="#"><img src="images/payment/3.jpg" alt="payment-img"></a></li>--}}
-{{--                                <li><a href="#"><img src="images/payment/4.jpg" alt="payment-img"></a></li>--}}
-{{--                                <li><a href="#"><img src="images/payment/5.jpg" alt="payment-img"></a></li>--}}
-{{--                            </ul>--}}
-{{--                            <div class="checkout-btn">--}}
-{{--                                <a class="ts-btn btn-light btn-large hover-theme" href="#">CONFIRM & BUY NOW</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="our-payment-sestem"> --}}
+                        {{--                            <h2 class="section-title-3">We  Accept :</h2> --}}
+                        {{--                            <ul class="payment-menu"> --}}
+                        {{--                                <li><a href="#"><img src="images/payment/1.jpg" alt="payment-img"></a></li> --}}
+                        {{--                                <li><a href="#"><img src="images/payment/2.jpg" alt="payment-img"></a></li> --}}
+                        {{--                                <li><a href="#"><img src="images/payment/3.jpg" alt="payment-img"></a></li> --}}
+                        {{--                                <li><a href="#"><img src="images/payment/4.jpg" alt="payment-img"></a></li> --}}
+                        {{--                                <li><a href="#"><img src="images/payment/5.jpg" alt="payment-img"></a></li> --}}
+                        {{--                            </ul> --}}
+                        {{--                            <div class="checkout-btn"> --}}
+                        {{--                                <a class="ts-btn btn-light btn-large hover-theme" href="#">CONFIRM & BUY NOW</a> --}}
+                        {{--                            </div> --}}
+                        {{--                        </div> --}}
                         <!-- End Payment Way -->
                     </div>
                 </div>
@@ -107,13 +108,19 @@
                     <div class="checkout-right-sidebar">
                         <div class="our-important-note">
                             <h2 class="section-title-3">Note :</h2>
-                            <p class="note-desc">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed do eiusmod tempor incididunt ut laborekf et dolore magna aliqua.</p>
+                            <p class="note-desc">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed do eiusmod
+                                tempor incididunt ut laborekf et dolore magna aliqua.</p>
                             <ul class="important-note">
-                                <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet, consectetur nipabali</a></li>
-                                <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet</a></li>
-                                <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet, consectetur nipabali</a></li>
-                                <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet, consectetur nipabali</a></li>
-                                <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit amet</a></li>
+                                <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit
+                                        amet, consectetur nipabali</a></li>
+                                <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit
+                                        amet</a></li>
+                                <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit
+                                        amet, consectetur nipabali</a></li>
+                                <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit
+                                        amet, consectetur nipabali</a></li>
+                                <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lorem ipsum dolor sit
+                                        amet</a></li>
                             </ul>
                         </div>
                         <div class="puick-contact-area mt--60">
