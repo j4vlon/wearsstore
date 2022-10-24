@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductRequest;
+use App\Models\Product;
 
 class AdminCategoryController extends Controller
 {
@@ -14,7 +16,7 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.categories.index');
     }
 
     /**
@@ -24,7 +26,7 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -33,9 +35,20 @@ class AdminCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $product = new Product();
+        $product->title = $request->input('title');
+        $product->category = $request->input('category');
+        $product->price = $request->input('price');
+        $product->description = $request->input('description');
+        if ($request->hasfile('file_url')){
+            $path = $request->file_url->store('uploads', 'public');
+            $product->file_url = '/storage/'.$path;
+        }
+        $product->status = $request->input('status');
+        $product->save();
+        return redirect()->back()->with('success', 'The product was successfully added');
     }
 
     /**
@@ -46,7 +59,8 @@ class AdminCategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::where('id', $id)->first();
+        return view('admin.product_update', compact('product'));
     }
 
     /**
@@ -57,7 +71,7 @@ class AdminCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -69,7 +83,16 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::firstOrfail('id', $id);
+        $product->title = $request->title;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        if ($request->hasfile('file_url')){
+            $path = $request->file_url->store('uploads', 'public');
+            $product->file_url = '/storage/'.$path;
+        }
+        $product->save();
+        return redirect()->back()->with('success', 'The product was successfully updated');
     }
 
     /**
@@ -80,6 +103,9 @@ class AdminCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::firstOrfail('id', $id);
+        $product->delete();
+
+        return redirect()->back();
     }
 }

@@ -3,19 +3,20 @@
     <div class="col-md-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                @section('title')<title>Add Product</title>@endsection
+                @section('title')<title>Edit product</title>@endsection
 
-                    <h4 class="card-title">Add Product</h4>
-                    @if(session()->has('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session()->get('success') }}
-                        </div>
-                    @endif
-                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                <h4 class="card-title">Edit product: {{ $product->title }}</h4>
+                @if(session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+                <form action="{{ route('categories.update', $product->id) }}" class="forms-sample" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
                         <label for="title">Product Title</label>
-                        <input type="text" name="title" placeholder="Product name" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}">
+                        <input type="text" name="title" placeholder="Product name" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ $product->title }}">
                         @if($errors->has('title'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('title') }}
@@ -39,7 +40,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Product price</label>
-                        <input type="text" name="price" placeholder="Product price" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}">
+                        <input type="text" name="price" placeholder="Product price" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" value="{{ $product->price }}">
                         @if($errors->has('price'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('price') }}
@@ -48,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputConfirmPassword1">Product description</label>
-                        <textarea name="description"  placeholder="Description of product" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}"></textarea>
+                        <textarea name="description"  placeholder="Description of product" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}">{{ $product->description }}</textarea>
                         @if($errors->has('description'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('description') }}
@@ -56,7 +57,7 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <input name="file_url" type="file"  placeholder="Description of product" style="margin-right: 50px" class="form-control {{ $errors->has('file_url') ? 'is-invalid' : '' }}">
+                        <input name="file_url" type="file"  placeholder="Description of product" style="margin-right: 50px" class="form-control {{ $errors->has('file_url') ? 'is-invalid' : '' }}" {{ $product->file_url }}>
                         @if($errors->has('file_url'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('file_url') }}
