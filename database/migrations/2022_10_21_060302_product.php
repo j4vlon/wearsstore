@@ -21,7 +21,7 @@ class Product extends Migration
            $table->string('category');
            $table->string('price');
            $table->string('file_url');
-           $table->boolean('status');
+           $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
