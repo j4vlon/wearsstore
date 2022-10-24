@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ProductsRequest;
 
 class AdminCategoryController extends Controller
 {
@@ -35,9 +35,8 @@ class AdminCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductsRequest $request)
     {
-
         $product = new Product();
         $product->name = $request->input('name');
         $product->category = $request->input('category');
@@ -48,7 +47,7 @@ class AdminCategoryController extends Controller
             $product->file_url = '/storage/' . $path;
         }
         $product->status = $request->input('status');
-        
+
         $product->save();
         return redirect()->back()->with('success', 'The product was successfully added');
     }

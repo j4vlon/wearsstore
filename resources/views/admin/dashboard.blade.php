@@ -98,7 +98,7 @@
                                         @endif
                                         <label for="status">Product are aviable</label>
                                         <input type="checkbox" name="status" style="margin-left: 15px"
-                                            class="{{ $errors->has('status') ? 'is-invalid' : '' }}" >
+                                            class="{{ $errors->has('status') ? 'is-invalid' : '' }}" value="1">
                                         @if ($errors->has('status'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('status') }}
