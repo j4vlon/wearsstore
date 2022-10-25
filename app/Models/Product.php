@@ -20,8 +20,13 @@ class Product extends Model
         'status',
     ];
 
-    public static function findOrfail(string $string, int $id)
+   public function cartItem()
+   {
+       return $this->belongsTo(CartItem::class);
+   }
+    public function order()
     {
+        return $this->belongsTo(Order::class);
     }
 
     public function sluggable(): array

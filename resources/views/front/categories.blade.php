@@ -113,6 +113,11 @@
                 </div>
                 <!-- End Filter Menu -->
                 <!-- End Product MEnu -->
+                @if(session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
                 <div class="row">
                     <div class="product__list another-product-style">
                         <!-- Start Single Product -->
@@ -127,9 +132,16 @@
                                     </div>
                                     <div class="product__hover__info">
                                         <ul class="product__action">
-                                            <li><a class="quick-view modal-view detail-link" href="categories/{{ $category->slug }}"><span class="ti-plus"></span></a></li>
-                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                            <li><a class="quick-view modal-view detail-link" href="categories/{{ $category->slug }}"><i class="fa-solid fa-eye"></i></a></li>
+                                            <li>
+                                                <form action="{{ route('cart.create', $category->id) }}" method="post">
+                                                    @csrf
+                                                    <button style="background:none;border: none;" title="Add TO Cart" type="submit">
+                                                        <i class="fa-sharp fa-solid fa-cart-plus"></i>
+                                                    </button>
+                                                </form>
+                                            </li>
+                                            <li><a title="Wishlist" href="wishlist.html"><i class="fa-solid fa-heart"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>

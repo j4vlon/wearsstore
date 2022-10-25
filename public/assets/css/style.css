@@ -36,7 +36,7 @@
   23. Our Blog Details
   24. Shop Details Area
   25. Our Wishlist Area
-  26. Our Cart Area
+  26. Our CartItem Area
   27. Our Checkout Page
   28. portfolio style
 
@@ -3440,7 +3440,7 @@ blockquote::before {
     margin-top: 10px;
 }
 /*---------------------------------------
-  26. Our Cart Area
+  26. Our CartItem Area
 ----------------------------------------*/
 
 .cart-title-area {

@@ -62,12 +62,12 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="categories/{{ $product->id }}" class="btn btn-primary" style="width: 100%; margin-bottom: 5px">Edit</a>
+                                                    <a href="products/{{ $product->id }}" class="btn btn-primary" style="width: 100%; margin-bottom: 5px">Edit</a>
                                                     <br>
-                                                    <form action="{{ route('categories.destroy', $product->id) }}" method="post">
+                                                    <form action="{{ route('products.destroy', $product->id) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger" style="width: 100%">Delet</button>
+                                                        <button type="submit" class="btn btn-danger" style="width: 100%">Delete</button>
                                                     </form>
 
                                                 </td>

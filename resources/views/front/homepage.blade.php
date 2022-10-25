@@ -81,7 +81,7 @@
             </div>
         </div>
         <!-- End Offset MEnu -->
-        <!-- Start Cart Panel -->
+        <!-- Start CartItem Panel -->
         <div class="shopping__cart">
             <div class="shopping__cart__inner">
                 <div class="offsetmenu__close__btn">
@@ -129,7 +129,7 @@
                 </ul>
             </div>
         </div>
-        <!-- End Cart Panel -->
+        <!-- End CartItem Panel -->
     </div>
     <!-- End Offset Wrapper -->
     <!-- Start Feature Product -->

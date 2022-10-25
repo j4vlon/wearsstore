@@ -1,13 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\ProductRequest;
-use App\Models\Product;
 
-class AdminCategoryController extends Controller
+class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +13,7 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index');
+        //
     }
 
     /**
@@ -26,7 +23,7 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -35,9 +32,9 @@ class AdminCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -48,7 +45,7 @@ class AdminCategoryController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -59,7 +56,7 @@ class AdminCategoryController extends Controller
      */
     public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -71,7 +68,7 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        //
     }
 
     /**
@@ -82,6 +79,6 @@ class AdminCategoryController extends Controller
      */
     public function destroy($id)
     {
-
+        //
     }
 }

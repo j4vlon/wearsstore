@@ -56,7 +56,7 @@
                                 </li>
                                 <li class="drop"><a href="/checkout">Checkout</a>
                                 </li>
-                                <li class="drop"><a href="/cart">Cart</a>
+                                <li class="drop"><a href="/cart/{{ session()->getId() }}">Cart</a>
                                 </li>
                             </ul>
                         </nav>
@@ -158,7 +158,7 @@
             </div>
         </div>
         <!-- End Offset MEnu -->
-        <!-- Start Cart Panel -->
+        <!-- Start CartItem Panel -->
         <div class="shopping__cart">
             <div class="shopping__cart__inner">
                 <div class="offsetmenu__close__btn">
@@ -206,10 +206,10 @@
                 </ul>
             </div>
         </div>
-        <!-- End Cart Panel -->
+        <!-- End CartItem Panel -->
     </div>
 @yield('content')
-<!-- End Cart Panel -->
+<!-- End CartItem Panel -->
     <!-- Start Footer Area -->
 
     <!-- End Footer Area -->

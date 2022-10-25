@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <form action="#">
+                    <form action="{{ route('products.store') }}">
                         <div class="table-content table-responsive">
                             <table>
                                 <thead>
@@ -39,22 +39,27 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td class="product-thumbnail"><a href="#"><img src="images/product/4.png" alt="product img" /></a></td>
-                                    <td class="product-name"><a href="#">Vestibulum suscipit</a></td>
-                                    <td class="product-price"><span class="amount">£165.00</span></td>
-                                    <td class="product-quantity"><input type="number" value="1" /></td>
-                                    <td class="product-subtotal">£165.00</td>
-                                    <td class="product-remove"><a href="#">X</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="product-thumbnail"><a href="#"><img src="images/product/3.png" alt="product img" /></a></td>
-                                    <td class="product-name"><a href="#">Vestibulum dictum magna</a></td>
-                                    <td class="product-price"><span class="amount">£50.00</span></td>
-                                    <td class="product-quantity"><input type="number" value="1" /></td>
-                                    <td class="product-subtotal">£50.00</td>
-                                    <td class="product-remove"><a href="#">X</a></td>
-                                </tr>
+                                @foreach($carts as $cart)
+                                                                            <tr>
+                                            <td class="product-thumbnail"><a href="#"><img src="{{ $cart->product->file_url }}" alt="product img" /></a></td>
+                                            <td class="product-name"><a href="#">{{ $cart->product->title }}</a></td>
+                                            <td class="product-price"><span class="amount">{{ $cart->product->price }}</span></td>
+                                            <td class="product-quantity">
+                                                <form action="">
+                                                    <input type="number" value="{{ $cart->count }}" />
+                                                </form>
+
+                                            </td>
+                                            <td class="product-subtotal">£165.00</td>
+                                            <td class="product-remove">
+                                                <form action="{{ route('delete.cartItem', $cart->id) }}" method="post">
+                                                    @csrf
+                                                <button type="submit" href=""><i class="fa-sharp fa-solid fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -63,12 +68,6 @@
                                 <div class="buttons-cart">
                                     <input type="submit" value="Update Cart" />
                                     <a href="#">Continue Shopping</a>
-                                </div>
-                                <div class="coupon">
-                                    <h3>Coupon</h3>
-                                    <p>Enter your coupon code if you have one.</p>
-                                    <input type="text" placeholder="Coupon code" />
-                                    <input type="submit" value="Apply Coupon" />
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-5 col-xs-12">
