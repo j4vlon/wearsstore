@@ -24,7 +24,7 @@ use \App\Http\Controllers\ProductsController;
 Route::prefix('admin')->group(function () {
 //    Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::resource('/categories', AdminCategoryController::class);
-    Route::resource('/products', AdminCategoryController::class);
+    Route::resource('/products', AdminProductController::class);
     Route::resource('/orders', AdminCategoryController::class);
 });
 
