@@ -37,9 +37,10 @@ Route::get('/categories/{slug}', [CategoryController::class, 'show']);
 
 //Route::get('/product/{slug}', [ProductsController::class, 'show']);
 
-Route::get('/cart/{id}', [CartController::class, 'index']);
-Route::post('/cart/{id}', [CartController::class, 'addToCart'])->name('cart.create');
-Route::post('cart/delete/{id}', [CartController::class, 'deleteCartItem'])->name('delete.cartItem');
+Route::get('/cart/', [CartController::class, 'index']);
+Route::post('/cart/', [CartController::class, 'addToCart'])->name('cart.create');
+Route::put('/cart/{id}', [CartController::class, 'updateCartItem'])->name('cart.update');
+Route::delete('cart/{id}', [CartController::class, 'deleteCartItem'])->name('cart.delete');
 
 Route::get('/checkout', [CheckoutController::class, 'index']);
 Route::get('/checkout/success', [CheckoutController::class, 'success']);
