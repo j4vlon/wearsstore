@@ -28,7 +28,8 @@ class ProductRequest extends FormRequest
             'category' => 'required',
             'price' => 'required',
             'description' => 'required',
-            'file_url' => 'mimes: png,jpg,jpeg'
+            'file_url' => ['mimes:png,jpg,jpeg', 'required'],
+            'status' => ['nullable']
         ];
     }
 }

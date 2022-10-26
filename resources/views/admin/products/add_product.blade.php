@@ -1,23 +1,23 @@
 @extends('admin._layout')
 @section('content')
-
-            <div class="col-md-6 grid-margin stretch-card">
+    <div class="container">
+        <div class="row">
+            <div style="margin-bottom: 60px" class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        @section('title')<title>Edit product</title>@endsection
+                        @section('title')<title>Add Product</title>@endsection
 
-                        <h4 class="card-title">Edit product: {{ $product->title }}</h4>
+                        <h4 class="card-title">Add Product</h4>
                         @if(session()->has('success'))
                             <div class="alert alert-success" role="alert">
                                 {{ session()->get('success') }}
                             </div>
                         @endif
-                        <form action="{{ route('categories.update', $product->id) }}" class="forms-sample" method="post" enctype="multipart/form-data">
+                        <form method="post" enctype="multipart/form-data" action="{{ route('products.store') }}">
                             @csrf
-                            @method('PUT')
                             <div class="form-group">
-                                <label for="title">Product Title</label>
-                                <input type="text" name="title" placeholder="Product name" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ $product->title }}">
+                                <label for="title">Product title</label>
+                                <input type="text" name="title" placeholder="Product title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}">
                                 @if($errors->has('title'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('title') }}
@@ -25,13 +25,11 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <select type="text" name="category" placeholder="Product category" class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" style="border: none;
-    border-bottom: 1px solid #c1c1c1;">
+                                <select type="text" name="category" placeholder="Product category" class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}">
                                     <option disabled>Select category</option>
-                                    <option value="furnitures">Furnitures</option>
-                                    <option value="bags">Bags</option>
-                                    <option value="decoration">Decorations</option>
-                                    <option value="accessories">Accessories</option>
+                                    @foreach($categories as $category)
+                                    <option value="{{ $category->title }}">{{ $category->title }}</option>
+                                    @endforeach
                                 </select>
                                 @if($errors->has('category'))
                                     <div class="invalid-feedback">
@@ -41,7 +39,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Product price</label>
-                                <input type="text" name="price" placeholder="Product price" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" value="{{ $product->price }}">
+                                <input type="text" name="price" placeholder="Product price" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}">
                                 @if($errors->has('price'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('price') }}
@@ -50,7 +48,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputConfirmPassword1">Product description</label>
-                                <textarea name="description"  placeholder="Description of product" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}">{{ $product->description }}</textarea>
+                                <textarea name="description"  placeholder="Description of product" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}"></textarea>
                                 @if($errors->has('description'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('description') }}
@@ -58,7 +56,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <input name="file_url" type="file"  placeholder="Description of product" style="margin-right: 50px" class="form-control {{ $errors->has('file_url') ? 'is-invalid' : '' }}" {{ $product->file_url }}>
+                                <input name="file_url" type="file"  placeholder="Description of product" style="margin-right: 50px" class="form-control {{ $errors->has('file_url') ? 'is-invalid' : '' }}">
                                 @if($errors->has('file_url'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('file_url') }}
@@ -82,6 +80,6 @@
                     </div>
                 </div>
             </div>
-
-
+        </div>
+    </div
 @endsection

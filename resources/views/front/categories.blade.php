@@ -30,10 +30,9 @@
                         <div class="filter__menu__container">
                             <div class="product__menu">
                                 <button data-filter="*"  class="is-checked">All</button>
-                                <button data-filter=".furnitures">Furnitures</button>
-                                <button data-filter=".bags">Bags</button>
-                                <button data-filter=".decoration">Decoration</button>
-                                <button data-filter=".accessories">Accessories</button>
+                                @foreach($categories as $category)
+                                <button data-filter=".{{ $category->title }}">{{ $category->title }}</button>
+                                @endforeach
                             </div>
                             <div class="filter__box">
                                 <a class="filter__menu" href="#">filter</a>
@@ -55,11 +54,11 @@
                                         <h2>Sort By</h2>
                                         <ul class="filter__list">
                                             <li><a href="#default">Default</a></li>
-                                            <li><a href="#accessories">Accessories</a></li>
-                                            <li><a href="#bags">Bags</a></li>
-                                            <li><a href="#chair">Chair</a></li>
-                                            <li><a href="#decoration">Decoration</a></li>
-                                            <li><a href="#fashion">Fashion</a></li>
+                                            <li><a href="#Accessories">Accessories</a></li>
+                                            <li><a href="#Bags">Bags</a></li>
+                                            <li><a href="#Chair">Chair</a></li>
+                                            <li><a href="#Decoration">Decoration</a></li>
+                                            <li><a href="#Fashion">Fashion</a></li>
                                         </ul>
                                     </div>
                                     <div class="single__filter">
@@ -121,21 +120,22 @@
                 <div class="row">
                     <div class="product__list another-product-style">
                         <!-- Start Single Product -->
-                        @foreach($categories as $category)
-                            <div class="col-md-3 single__pro col-lg-3 cat--1 col-sm-4 col-xs-12 {{ $category->category }}">
+                        @foreach($products as $product)
+                            <div class="col-md-3 single__pro col-lg-3 cat--1 col-sm-4 col-xs-12 {{ $product->category }}">
                             <div class="product foo">
                                 <div class="product__inner">
                                     <div class="pro__thumb">
                                         <a href="#">
-                                            <img src="{{ $category->file_url }}" alt="product images">
+                                            <img src="{{ $product->file_url }}" alt="product images">
                                         </a>
                                     </div>
                                     <div class="product__hover__info">
                                         <ul class="product__action">
-                                            <li><a class="quick-view modal-view detail-link" href="categories/{{ $category->slug }}"><i class="fa-solid fa-eye"></i></a></li>
+                                            <li><a class="quick-view modal-view detail-link" href="product/{{ $product->slug }}"><i class="fa-solid fa-eye"></i></a></li>
                                             <li>
-                                                <form action="{{ route('cart.create', $category->id) }}" method="post">
+                                                <form action="{{ route('cart.create') }}" method="post">
                                                     @csrf
+                                                    <input type="hidden" value="{{ $product->id }}" name="product_id">
                                                     <button style="background:none;border: none;" title="Add TO Cart" type="submit">
                                                         <i class="fa-sharp fa-solid fa-cart-plus"></i>
                                                     </button>
@@ -146,10 +146,10 @@
                                     </div>
                                 </div>
                                 <div class="product__details">
-                                    <h2><a href="product-details.html">{{ $category->title }}</a></h2>
+                                    <h2><a href="product-details.html">{{ $product->title }}</a></h2>
                                     <ul class="product__price">
                                         <li class="old__price">$16.00</li>
-                                        <li class="new__price">${{ $category->price }}</li>
+                                        <li class="new__price">${{ $product->price }}</li>
                                     </ul>
                                 </div>
                             </div>

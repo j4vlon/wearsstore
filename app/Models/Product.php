@@ -18,6 +18,7 @@ class Product extends Model
         'description',
         'file_url',
         'status',
+        'category_id'
     ];
 
    public function cartItem()
@@ -27,6 +28,11 @@ class Product extends Model
     public function order()
     {
         return $this->belongsTo(Order::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public function sluggable(): array

@@ -29,36 +29,44 @@
 
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav" style="padding-top: 1.5rem;">
-{{--        <li class="nav-item">--}}
-{{--            <a class="nav-link" href="/admin/dashboard">--}}
 
-{{--                <span class="menu-title">Dashboard</span>--}}
-{{--            </a>--}}
-{{--        </li>--}}
         <li class="nav-item">
             <a class="nav-link" href="/admin/dashboard">
-
-                <span class="menu-title">Product list</span>
-
+                <span class="menu-title">Dashboard</span>
             </a>
-
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/categories">
+                <span class="menu-title">Categories list</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/categories/create">
+                <span class="menu-title">Add category</span>
+            </a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link" href="/admin/products">
-
-                <span class="menu-title">Add product</span>
-
+                <span class="menu-title">Product list</span>
             </a>
 
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/products/create">
+                <span class="menu-title">Add product</span>
+            </a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link"href="" >
-
                 <span class="menu-title">Orders</span>
-
             </a>
-
         </li>
+
         <li class="nav-item">
             <a class="nav-link" href="">
                 <span class="menu-title">Users</span>

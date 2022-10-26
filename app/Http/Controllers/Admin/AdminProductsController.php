@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
@@ -16,7 +17,8 @@ class AdminProductsController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index');
+        $products = Product::all();
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -26,7 +28,8 @@ class AdminProductsController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.products.add_product', compact('categories'));
     }
 
     /**
@@ -37,16 +40,12 @@ class AdminProductsController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $product = new Product();
-        $product->title = $request->input('title');
-        $product->category = $request->input('category');
-        $product->price = $request->input('price');
-        $product->description = $request->input('description');
+        $data = $request->validated();
+        $product = Product::create($data);
         if ($request->hasfile('file_url')){
             $path = $request->file_url->store('uploads', 'public');
             $product->file_url = '/storage/'.$path;
         }
-        $product->status = $request->input('status');
         $product->save();
         return redirect()->back()->with('success', 'The product was successfully added');
     }
@@ -60,7 +59,7 @@ class AdminProductsController extends Controller
     public function show($id)
     {
         $product = Product::where('id', $id)->first();
-        return view('admin.product_update', compact('product'));
+        return view('admin.products.product_update', compact('product'));
     }
 
     /**
@@ -71,22 +70,21 @@ class AdminProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::where('id', $id)->first();
+        $categories = Category::all();
+        return view('admin.products.product_update', compact('product', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Product $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        $product = Product::firstOrfail('id', $id);
-        $product->title = $request->title;
-        $product->price = $request->price;
-        $product->description = $request->description;
+        $product->update($request->except('_token'));
         if ($request->hasfile('file_url')){
             $path = $request->file_url->store('uploads', 'public');
             $product->file_url = '/storage/'.$path;

@@ -1,7 +1,7 @@
 @extends('front._layout')
 @section('content')
     <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({{asset('assets/images/2.jpg')}}) no-repeat scroll center center / cover ;">
         <div class="ht__bradcaump__wrap">
             <div class="container">
                 <div class="row">
@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <form action="{{ route('products.store') }}">
+
                         <div class="table-content table-responsive">
                             <table>
                                 <thead>
@@ -40,7 +40,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($carts as $cart)
-                                                                            <tr>
+                                    <tr>
                                             <td class="product-thumbnail"><a href="#"><img src="{{ $cart->product->file_url }}" alt="product img" /></a></td>
                                             <td class="product-name"><a href="#">{{ $cart->product->title }}</a></td>
                                             <td class="product-price"><span class="amount">{{ $cart->product->price }}</span></td>
@@ -52,12 +52,13 @@
                                             </td>
                                             <td class="product-subtotal">£165.00</td>
                                             <td class="product-remove">
-                                                <form action="{{ route('delete.cartItem', $cart->id) }}" method="post">
+                                                <form action="{{ route('cart.delete', $cart->id) }}" method="post">
                                                     @csrf
+                                                    @method('DELETE')
                                                 <button type="submit" href=""><i class="fa-sharp fa-solid fa-trash"></i></button>
                                                 </form>
                                             </td>
-                                        </tr>
+                                    </tr>
 
                                 @endforeach
                                 </tbody>
@@ -114,7 +115,6 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>

@@ -3,11 +3,13 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\OrdersController;
+
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
 use \App\Http\Controllers\FrontController;
+use \App\Http\Controllers\ProductsController;
 use \App\Http\Controllers\CategoryController;
 use \App\Http\Controllers\Admin\AdminProductsController;
 
@@ -26,22 +28,22 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::resource('/categories', AdminCategoryController::class);
     Route::resource('/products', AdminProductsController::class);
-    Route::resource('/orders', OrdersController::class);
+   // Route::resource('/orders', OrdersController::class);
 });
 
 Route::get('/', [FrontController::class, 'homepage']);
 Route::get('/shop', [FrontController::class, 'CategoryView']);
 
-Route::get('/categories', [CategoryController::class, 'index']);
-Route::get('/categories/{slug}', [CategoryController::class, 'show']);
+//Route::get('/categories', [CategoryController::class, 'index']);
 
-//Route::get('/product/{slug}', [ProductsController::class, 'show']);
+Route::get('/product/{slug}', [ProductsController::class, 'show']);
 
 Route::get('/cart/', [CartController::class, 'index']);
 Route::post('/cart/', [CartController::class, 'addToCart'])->name('cart.create');
 Route::put('/cart/{id}', [CartController::class, 'updateCartItem'])->name('cart.update');
 Route::delete('cart/{id}', [CartController::class, 'deleteCartItem'])->name('cart.delete');
 
-Route::get('/checkout', [CheckoutController::class, 'index']);
-Route::get('/checkout/success', [CheckoutController::class, 'success']);
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('show.checkout');
+Route::post('checkout', [CheckoutController::class, 'store'])->name('create.order');
+Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
 

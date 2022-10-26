@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 class DashboardController extends Controller
 {
     public function index() {
-        $products = Product::all();
-        return view('admin.dashboard', compact('products'));
+            return view('admin.dashboard');
     }
 }

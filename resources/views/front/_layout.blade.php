@@ -56,7 +56,7 @@
                                 </li>
                                 <li class="drop"><a href="/checkout">Checkout</a>
                                 </li>
-                                <li class="drop"><a href="/cart/{{ session()->getId() }}">Cart</a>
+                                <li class="drop"><a href="/cart">Cart</a>
                                 </li>
                             </ul>
                         </nav>

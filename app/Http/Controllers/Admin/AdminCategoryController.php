@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Requests\ProductRequest;
-use App\Models\Product;
 
 class AdminCategoryController extends Controller
 {
@@ -16,7 +15,8 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index');
+        $categories = Category::all();
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -26,7 +26,7 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-
+        return view('admin.categories.add_categories');
     }
 
     /**
@@ -35,9 +35,12 @@ class AdminCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
-
+        $category = new Category();
+        $category->title = $request->title;
+        $category->save();
+        return redirect()->back()->with('success', 'Category was successfully added');
     }
 
     /**
@@ -48,7 +51,8 @@ class AdminCategoryController extends Controller
      */
     public function show($id)
     {
-
+        $category = Category::where('id', $id)->first();
+        return view('admin.categories.category_update', compact('category'));
     }
 
     /**
@@ -71,7 +75,10 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $category = Category::firstOrfail('id', $id);
+        $category->title = $request->title;
+        $category->save();
+        return redirect()->back();
     }
 
     /**
@@ -82,6 +89,8 @@ class AdminCategoryController extends Controller
      */
     public function destroy($id)
     {
-
+        $category = Category::firstOrfail('id', $id);
+        $category->delete();
+        return redirect()->back();
     }
 }
