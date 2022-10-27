@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCartItem extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateCartItem extends Migration
      */
     public function up()
     {
-        Schema::create('cart_item', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->string('session_id')->nullable();
-            $table->string('user_id')->nullable();
-            $table->string('qty');
-            $table->foreignId('product_id');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateCartItem extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cart_item');
+        Schema::dropIfExists('notifications');
     }
 }

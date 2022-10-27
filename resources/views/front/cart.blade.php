@@ -40,15 +40,21 @@
                                 </thead>
                                 <tbody>
                                 @foreach($carts as $cart)
+                                    @if(!$cart->order_id)
                                     <tr>
-                                            <td class="product-thumbnail"><a href="#"><img src="{{ $cart->product->file_url }}" alt="product img" /></a></td>
-                                            <td class="product-name"><a href="#">{{ $cart->product->title }}</a></td>
+                                            <td class="product-thumbnail"><a href="{{ $cart->product->file_url }}"><img src="{{ $cart->product->file_url }}" alt="product img" /></a></td>
+                                            <td class="product-name"><a href="product/{{ $cart->product->slug }}">{{ $cart->product->title }}</a></td>
                                             <td class="product-price"><span class="amount">{{ $cart->product->price }}</span></td>
                                             <td class="product-quantity">
-                                                <form action="">
-                                                    <input type="number" value="{{ $cart->count }}" />
-                                                </form>
+                                                <form action="{{ route('cart.update', $cart->id) }}" method="post" style="display: flex;align-items: center;
+    justify-content: space-around;">
+                                                    @csrf
+                                                    @method('PUT')
+                                                            <input type="number" name="qty" value="{{ $cart->qty }}">
 
+                                                        <button type="submit" class="btn btn-success" style="height: 40px">Save</button>
+
+                                                </form>
                                             </td>
                                             <td class="product-subtotal">£165.00</td>
                                             <td class="product-remove">
@@ -59,58 +65,21 @@
                                                 </form>
                                             </td>
                                     </tr>
-
+                                    @else
+                                        <h4>Your cart is empty</h4>
+                                        @endif
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-sm-7 col-xs-12">
-                                <div class="buttons-cart">
-                                    <input type="submit" value="Update Cart" />
-                                    <a href="#">Continue Shopping</a>
-                                </div>
+
                             </div>
                             <div class="col-md-4 col-sm-5 col-xs-12">
                                 <div class="cart_totals">
-                                    <h2>Cart Totals</h2>
-                                    <table>
-                                        <tbody>
-                                        <tr class="cart-subtotal">
-                                            <th>Subtotal</th>
-                                            <td><span class="amount">£215.00</span></td>
-                                        </tr>
-                                        <tr class="shipping">
-                                            <th>Shipping</th>
-                                            <td>
-                                                <ul id="shipping_method">
-                                                    <li>
-                                                        <input type="radio" />
-                                                        <label>
-                                                            Flat Rate: <span class="amount">£7.00</span>
-                                                        </label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="radio" />
-                                                        <label>
-                                                            Free Shipping
-                                                        </label>
-                                                    </li>
-                                                    <li></li>
-                                                </ul>
-                                                <p><a class="shipping-calculator-button" href="#">Calculate Shipping</a></p>
-                                            </td>
-                                        </tr>
-                                        <tr class="order-total">
-                                            <th>Total</th>
-                                            <td>
-                                                <strong><span class="amount">£215.00</span></strong>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
                                     <div class="wc-proceed-to-checkout">
-                                        <a href="/RouteToCheckout">Proceed to Checkout</a>
+                                        <a href="/checkout">Proceed to Checkout</a>
                                     </div>
                                 </div>
                             </div>

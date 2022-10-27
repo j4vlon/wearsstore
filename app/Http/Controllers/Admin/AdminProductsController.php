@@ -82,8 +82,12 @@ class AdminProductsController extends Controller
      * @param  Product $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
+        $category = Category::where('id', $request->category_id)->first();
+        $request->merge([
+            'category' => $category->title
+                        ]);
         $product->update($request->except('_token'));
         if ($request->hasfile('file_url')){
             $path = $request->file_url->store('uploads', 'public');

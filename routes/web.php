@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\OrdersController;
+use App\Http\Controllers\Admin\UsersController;
+use \App\Http\Controllers\Admin\AdminProductsController;
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
@@ -11,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\FrontController;
 use \App\Http\Controllers\ProductsController;
 use \App\Http\Controllers\CategoryController;
-use \App\Http\Controllers\Admin\AdminProductsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +30,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::resource('/categories', AdminCategoryController::class);
     Route::resource('/products', AdminProductsController::class);
-   // Route::resource('/orders', OrdersController::class);
+    Route::resource('/orders', OrdersController::class);
+    Route::resource('/users', UsersController::class);
 });
 
 Route::get('/', [FrontController::class, 'homepage']);

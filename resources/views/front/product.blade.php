@@ -55,24 +55,24 @@
                                 <li class="old__prize">$15.21</li>
                                 <li>${{ $product->price }}</li>
                             </ul>
-
+                            <form action="{{ route('cart.update', $carts->id) }}" method="post">
                             <div class="product-action-wrap">
                                 <div class="prodict-statas"><span>Quantity :</span></div>
                                 <div class="product-quantity">
-                                    <form action="{{ route('cart.update', $carts->id) }}" method="post">
                                         @csrf
                                         @method('PUT')
                                         <div class="product-quantity">
                                             <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" type="text" name="qty" value="{{ $carts->count }}">
+                                                <input class="cart-plus-minus-box" type="text" name="qty" value="{{ $carts->qty }}">
                                             </div>
                                         </div>
                                         <ul class="pro__dtl__btn">
-                                            <li class="buy__now__btn"><button type="submit" class="btn btn-outline-primary">Buy now</button></li>
+                                            <li class="buy__now__btn"><button type="submit" class="btn btn-success">save</button></li>
                                         </ul>
-                                    </form>
                                 </div>
                             </div>
+                            </form>
+                            <a class="btn btn-primary" href="/checkout">Checkout</a>
                         </div>
                     </div>
                 </div>

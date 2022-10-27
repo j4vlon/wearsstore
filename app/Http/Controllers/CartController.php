@@ -10,24 +10,21 @@ class CartController extends Controller
 {
     public function index() {
         $carts = CartItem::with('product')->where('session_id', session()->getId())->get();
-
         return view('front.cart', compact('carts'));
     }
 
-
     public function addToCart(Request $request) {
-
         $carts = CartItem::where('product_id', $request->product_id)->first();
         if (isset($carts) && $carts->product_id == $request->product_id && $carts->session_id == session()->getId()) {
-            $carts->count += $carts->count;
+            $carts->qty += $carts->qty;
             $carts->save();
-        } else{
+        } else {
             $cart = new CartItem();
             if (Auth::check()){
                 $cart->user_id = Auth::id();
             }
             $cart->session_id = session()->getId();
-            $cart->count = 1;
+            $cart->qty = 1;
             $cart->product_id = $request->product_id;
             $cart->save();
         }
@@ -36,9 +33,9 @@ class CartController extends Controller
 
     public function updateCartItem(Request $request, $id) {
         $cart = CartItem::where('id', $id)->first();
-        $cart->count = $request->qty;
+        $cart->qty = $request->qty;
         $cart->save();
-        return redirect()->route('show.checkout');
+        return redirect()->back();
     }
 
     public function deleteCartItem($id) {

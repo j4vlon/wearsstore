@@ -55,7 +55,7 @@
                                 <li><a href="#">{{ $cartItem->product->title }}</a></li>
                                 <li><a href="#">{{ $cartItem->product->description }}</a></li>
                                 <li><a href="#">{{ $cartItem->product->price }}</a></li>
-                                <li><a href="#">{{ $cartItem->count }}</a></li>
+                                <li><a href="#">{{ $cartItem->qty }}</a></li>
                                 <li>
                                     <div class="puick-contact-area mt--60">
                                         <img src="{{ $cartItem->product->file_url }}" alt="">

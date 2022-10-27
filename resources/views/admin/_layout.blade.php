@@ -62,14 +62,26 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link"href="" >
+            <a class="nav-link"href="/admin/orders">
                 <span class="menu-title">Orders</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link"href="/admin/notifications">
+                <span class="menu-title">Notifications</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/users">
                 <span class="menu-title">Users</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/users/create">
+                <span class="menu-title">Add users</span>
             </a>
         </li>
     </ul>

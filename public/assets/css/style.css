@@ -2579,7 +2579,6 @@ select.select-color {
     color: #ffd542;
 }
 .product-action-wrap {
-    align-items: center;
     display: flex;
     margin-bottom: 33px;
 }

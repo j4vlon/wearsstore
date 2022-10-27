@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-class AdminCategoryController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
+        $users = User::all();
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -26,7 +27,7 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.add_categories');
+        return view('admin.users.add_user');
     }
 
     /**
@@ -35,12 +36,14 @@ class AdminCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(AddUserRequest $request)
     {
-        $category = new Category();
-        $category->title = $request->title;
-        $category->save();
-        return redirect()->back()->with('success', 'Category was successfully added');
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->address = $request->address;
+        $user->save();
+            return redirect()->back()->with('success', 'User was successfully added');
     }
 
     /**
@@ -51,8 +54,7 @@ class AdminCategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::where('id', $id)->first();
-        return view('admin.categories.category_update', compact('category'));
+        //
     }
 
     /**
@@ -63,7 +65,8 @@ class AdminCategoryController extends Controller
      */
     public function edit($id)
     {
-
+        $user = User::where('id', $id)->first();
+        return view('admin.users.edit_user', compact('user'));
     }
 
     /**
@@ -73,12 +76,14 @@ class AdminCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(AddUserRequest $request, $id)
     {
-        $category = Category::firstOrfail('id', $id);
-        $category->title = $request->title;
-        $category->save();
-        return redirect()->back();
+        $user = User::firstOrfail('id', $id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->address = $request->address;
+        $user->save();
+        return redirect()->back()->with('success', 'User was successfully edited');
     }
 
     /**
@@ -89,8 +94,8 @@ class AdminCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::firstOrfail('id', $id);
-        $category->delete();
+        $user = User::firstOrfail('id', $id);
+        $user->delete();
         return redirect()->back();
     }
 }

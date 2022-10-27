@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderMail;
 use App\Models\CartItem;
 use App\Models\Order;
 use App\Models\User;
@@ -16,7 +17,7 @@ class CheckoutController extends Controller
         return view('front.checkout', compact('cartItems'));
     }
 
-    public function store(Request $request) {
+    public function store(CheckoutRequest $request) {
         if (Auth::check()){
             $carts = CartItem::where('user_id', Auth::id())->get();
         }else{
@@ -36,8 +37,16 @@ class CheckoutController extends Controller
             $orders->username = $user->name;
             $orders->user_email = $user->email;
             $orders->user_address = $user->address;
+            $orders->product_qty = $cart->count;
             $orders->save();
+            $cart->order_id = $orders->id;
+            $cart->save();
         }
+        $message = [
+          'title' => 'new order',
+          'body' => 'new order was added'
+        ];
+        \Mail::to('fedot.pushkin98@gmail.com')->send(new OrderMail($message));
         return redirect()->route('checkout.success');
     }
 

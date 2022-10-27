@@ -25,7 +25,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <select type="text" name="category" placeholder="Product category" class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" style="border: none;
+                                <select type="text" name="category_id" placeholder="Product category" class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" style="border: none;
     border-bottom: 1px solid #c1c1c1;">
                                     <option disabled>Select category</option>
                                     @foreach($categories as $category)
