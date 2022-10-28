@@ -16,9 +16,9 @@ class OrderMail extends Mailable
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($message)
     {
-        $this->details = $details;
+        $this->message = $message;
     }
 
     /**
@@ -28,6 +28,6 @@ class OrderMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('front.checkout_succes');
     }
 }

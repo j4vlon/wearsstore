@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\OrderMail;
 use App\Models\CartItem;
 use App\Models\Order;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
+use App\Http\Requests\CheckoutRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -28,7 +27,7 @@ class CheckoutController extends Controller
             $user->address = $request->address;
             $user->save();
         }
-
+        $orders_id = [];
         foreach ($carts as $cart)
         {
             $orders = new Order();
@@ -37,18 +36,22 @@ class CheckoutController extends Controller
             $orders->username = $user->name;
             $orders->user_email = $user->email;
             $orders->user_address = $user->address;
-            $orders->product_qty = $cart->count;
+            $orders->product_qty = $cart->qty;
             $orders->save();
             $cart->order_id = $orders->id;
             $cart->save();
+            $orders_id[] = $orders->id;
+
+            Mail::send('front.checkout_succes', [
+                'order_id' => $orders->id
+            ], function ($message) {
+                $message->from('test@test.rw');
+                $message->to('test@test.ru');
+                $message->subject('New order was added');
+            });
         }
-        $message = [
-          'title' => 'new order',
-          'body' => 'new order was added'
-        ];
-        \Mail::to('fedot.pushkin98@gmail.com')->send(new OrderMail($message));
-        return redirect()->route('checkout.success');
-    }
+        return redirect()->route('checkout.success')->with(['order_id' => $orders_id]);
+}
 
     public function success() {
         return view('front.checkout_succes');

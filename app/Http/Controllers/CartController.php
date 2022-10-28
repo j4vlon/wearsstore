@@ -15,6 +15,7 @@ class CartController extends Controller
 
     public function addToCart(Request $request) {
         $carts = CartItem::where('product_id', $request->product_id)->first();
+//        dd($carts->product_id, $request->product_id, $carts->session_id, session()->getId());
         if (isset($carts) && $carts->product_id == $request->product_id && $carts->session_id == session()->getId()) {
             $carts->qty += $carts->qty;
             $carts->save();

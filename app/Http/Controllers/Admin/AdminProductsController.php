@@ -82,7 +82,7 @@ class AdminProductsController extends Controller
      * @param  Product $product
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, Product $product)
+    public function update(Request $request, Product $product)
     {
         $category = Category::where('id', $request->category_id)->first();
         $request->merge([

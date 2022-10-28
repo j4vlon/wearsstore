@@ -53,55 +53,13 @@
                                     <div class="single__filter">
                                         <h2>Sort By</h2>
                                         <ul class="filter__list">
-                                            <li><a href="#default">Default</a></li>
-                                            <li><a href="#Accessories">Accessories</a></li>
-                                            <li><a href="#Bags">Bags</a></li>
-                                            <li><a href="#Chair">Chair</a></li>
-                                            <li><a href="#Decoration">Decoration</a></li>
-                                            <li><a href="#Fashion">Fashion</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="single__filter">
-                                        <h2>Size</h2>
-                                        <ul class="filter__list">
-                                            <li><a href="#xxl">XXL</a></li>
-                                            <li><a href="#xl">XL</a></li>
-                                            <li><a href="#x">X</a></li>
-                                            <li><a href="#l">L</a></li>
-                                            <li><a href="#m">M</a></li>
-                                            <li><a href="#s">S</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="single__filter">
-                                        <h2>Tags</h2>
-                                        <ul class="filter__list">
-                                            <li><a href="#">All</a></li>
-                                            <li><a href="#">Accessories</a></li>
-                                            <li><a href="#">Bags</a></li>
-                                            <li><a href="#">Chair</a></li>
-                                            <li><a href="#">Decoration</a></li>
-                                            <li><a href="#">Fashion</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="single__filter">
-                                        <h2>Price</h2>
-                                        <ul class="filter__list">
-                                            <li><a href="#">$0.00 - $50.00</a></li>
-                                            <li><a href="#">$50.00 - $100.00</a></li>
-                                            <li><a href="#">$100.00 - $150.00</a></li>
-                                            <li><a href="#">$150.00 - $200.00</a></li>
-                                            <li><a href="#">$300.00 - $500.00</a></li>
-                                            <li><a href="#">$500.00 - $700.00</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="single__filter">
-                                        <h2>Color</h2>
-                                        <ul class="filter__list sidebar__list">
-                                            <li class="black"><a href="#"><i class="zmdi zmdi-circle"></i>Black</a></li>
-                                            <li class="blue"><a href="#"><i class="zmdi zmdi-circle"></i>Blue</a></li>
-                                            <li class="brown"><a href="#"><i class="zmdi zmdi-circle"></i>Brown</a></li>
-                                            <li class="red"><a href="#"><i class="zmdi zmdi-circle"></i>Red</a></li>
-                                            <li class="orange"><a href="#"><i class="zmdi zmdi-circle"></i>Orange</a></li>
+                                            <li>
+                                                <form action="/shop" method="get">
+                                                    <input type="number" name="min_price" min="10" step="10">
+                                                    <input type="number" name="max_price" min="10" step="10">
+                                                    <input type="submit">
+                                                </form>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -159,13 +117,7 @@
                     </div>
                 </div>
                 <!-- Start Load More BTn -->
-                <div class="row mt--60">
-                    <div class="col-md-12">
-                        <div class="htc__loadmore__btn">
-                            <a href="#">load more</a>
-                        </div>
-                    </div>
-                </div>
+
                 <!-- End Load More BTn -->
             </div>
         </div>

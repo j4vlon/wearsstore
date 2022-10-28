@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
+use App\Http\Requests\AddUserRequest;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -33,7 +33,7 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\AddUserRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(AddUserRequest $request)
@@ -76,12 +76,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AddUserRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $user = User::firstOrfail('id', $id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->address = $request->address;
+        $user->update($request->except('_token'));
         $user->save();
         return redirect()->back()->with('success', 'User was successfully edited');
     }
