@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'category' => 'required',
+            'category_id' => 'required',
             'price' => 'required',
             'description' => 'required',
             'file_url' => ['mimes:png,jpg,jpeg', 'required'],

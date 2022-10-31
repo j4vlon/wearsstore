@@ -25,10 +25,10 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <select type="text" name="category" placeholder="Product category" class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}">
+                                <select type="text" name="category_id" placeholder="Product category" class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}">
                                     <option disabled>Select category</option>
                                     @foreach($categories as $category)
-                                    <option value="{{ $category->title }}">{{ $category->title }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has('category'))

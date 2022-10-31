@@ -52,7 +52,7 @@
                     <div class="col-md-8 col-lg-8 col-sm-6 col-xs-6">
                         <nav class="mainmenu__nav hidden-xs hidden-sm">
                             <ul class="main__menu">
-                                <li class="drop"><a href="/shop">Shop</a>
+                                <li class="drop"><a href="/categories">Shop</a>
                                 </li>
                                 <li class="drop"><a href="/checkout">Checkout</a>
                                 </li>

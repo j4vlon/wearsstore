@@ -31,20 +31,20 @@
                             <div class="product__menu">
                                 <a href="/categories">All</a>
                                 @foreach($categories as $category)
-                                    <a href="/category/{{ $category->slug }}" style="margin-left: 20px">{{ $category->title }}</a>
+                                    <a href="/category/{{ $category->slug }}" style="margin-left: 20px" class="active">{{ $category->title }}</a>
                                 @endforeach
                             </div>
-                            <div style="display: flex; margin-bottom: 10px">
-                                <form action="/categories" style="margin-right: 20px">
+                            <div style="display: flex">
+                                <form action="/category/{{ $category->slug }}" style="margin-right: 20px">
                                     <input type="submit" value="Price down" name="price_down">
                                 </form>
-                                <form action="/categories" style="margin-right: 20px">
+                                <form action="/category/{{ $category->slug }}" style="margin-right: 20px">
                                     <input type="submit" value="Price up" name="price_up">
                                 </form>
-                                <form action="/categories" style="margin-right: 20px">
+                                <form action="/category/{{ $category->slug }}" style="margin-right: 20px">
                                     <input type="submit" value="Recently added" name="new_date">
                                 </form>
-                                <form action="/categories" style="margin-right: 20px">
+                                <form action="/category/{{ $category->slug }}" style="margin-right: 20px">
                                     <input type="submit" value="Oldest products" name="old_date">
                                 </form>
                             </div>
@@ -68,7 +68,7 @@
                                         <h2>Sort By</h2>
                                         <ul class="filter__list">
                                             <li>
-                                                <form action="/categories" method="get">
+                                                <form action="/category/{{ $category->slug }}" method="get">
                                                     <input type="number" name="min_price" min="10" step="10" placeholder="{{ $min_price }}">
                                                     <input type="number" name="max_price" min="10" step="10" placeholder="{{ $max_price }}">
                                                     <input type="submit">
@@ -94,40 +94,40 @@
                         <!-- Start Single Product -->
                         @foreach($products as $product)
                             <div class="col-md-3 single__pro col-lg-3 cat--1 col-sm-4 col-xs-12 {{ $product->category }}">
-                            <div class="product foo">
-                                <div class="product__inner">
-                                    <div class="pro__thumb">
-                                        <a href="#">
-                                            <img src="{{ $product->file_url }}" alt="product images">
-                                        </a>
+                                <div class="product foo">
+                                    <div class="product__inner">
+                                        <div class="pro__thumb">
+                                            <a href="#">
+                                                <img src="{{ $product->file_url }}" alt="product images">
+                                            </a>
+                                        </div>
+                                        <div class="product__hover__info">
+                                            <ul class="product__action">
+                                                <li><a class="quick-view modal-view detail-link" href="/product/{{ $product->slug }}"><i class="fa-solid fa-eye"></i></a></li>
+                                                <li>
+                                                    <form action="{{ route('cart.create') }}" method="post">
+                                                        @csrf
+                                                        <input type="hidden" value="{{ $product->id }}" name="product_id">
+                                                        <button style="background:none;border: none;" title="Add TO Cart" type="submit">
+                                                            <i class="fa-sharp fa-solid fa-cart-plus"></i>
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                                <li><a title="Wishlist" href="wishlist.html"><i class="fa-solid fa-heart"></i></a></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <div class="product__hover__info">
-                                        <ul class="product__action">
-                                            <li><a class="quick-view modal-view detail-link" href="/product/{{ $product->slug }}"><i class="fa-solid fa-eye"></i></a></li>
-                                            <li>
-                                                <form action="{{ route('cart.create') }}" method="post">
-                                                    @csrf
-                                                    <input type="hidden" value="{{ $product->id }}" name="product_id">
-                                                    <button style="background:none;border: none;" title="Add TO Cart" type="submit">
-                                                        <i class="fa-sharp fa-solid fa-cart-plus"></i>
-                                                    </button>
-                                                </form>
-                                            </li>
-                                            <li><a title="Wishlist" href="wishlist.html"><i class="fa-solid fa-heart"></i></a></li>
+                                    <div class="product__details">
+                                        <h2><a href="product-details.html">{{ $product->title }}</a></h2>
+                                        <ul class="product__price">
+                                            <li class="old__price">$16.00</li>
+                                            <li class="new__price">${{ $product->price }}</li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="product__details">
-                                    <h2><a href="product-details.html">{{ $product->title }}</a></h2>
-                                    <ul class="product__price">
-                                        <li class="old__price">$16.00</li>
-                                        <li class="new__price">${{ $product->price }}</li>
-                                    </ul>
-                                </div>
                             </div>
-                        </div>
-                        @endforeach
-                        <!-- End Single Product -->
+                    @endforeach
+                    <!-- End Single Product -->
                     </div>
                 </div>
                 <!-- Start Load More BTn -->
