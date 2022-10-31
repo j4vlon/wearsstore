@@ -31,21 +31,21 @@
                             <div class="product__menu">
                                 <a href="/categories">All</a>
                                 @foreach($categories as $category)
-                                    <a href="/category/{{ $category->slug }}" style="margin-left: 20px" class="active">{{ $category->title }}</a>
+                                    <a href="{{ route('category', $category->slug) }}" style="margin-left: 20px;"  class="{{ route('category', $category->slug) == url()->current() ? 'active' : '' }}">{{ $category->title }}</a>
                                 @endforeach
                             </div>
                             <div style="display: flex">
                                 <form action="/category/{{ $category->slug }}" style="margin-right: 20px">
-                                    <input type="submit" value="Price down" name="price_down">
+                                    <input type="submit" value="Price down" name="price_down" class="input">
                                 </form>
                                 <form action="/category/{{ $category->slug }}" style="margin-right: 20px">
-                                    <input type="submit" value="Price up" name="price_up">
+                                    <input type="submit" value="Price up" name="price_up" class="input">
                                 </form>
                                 <form action="/category/{{ $category->slug }}" style="margin-right: 20px">
-                                    <input type="submit" value="Recently added" name="new_date">
+                                    <input type="submit" value="Recently added" name="new_date" class="input">
                                 </form>
                                 <form action="/category/{{ $category->slug }}" style="margin-right: 20px">
-                                    <input type="submit" value="Oldest products" name="old_date">
+                                    <input type="submit" value="Oldest products" name="old_date" class="input">
                                 </form>
                             </div>
                             <div class="filter__box">

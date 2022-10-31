@@ -4150,3 +4150,11 @@ a.shipping-calculator-button:hover {
 :focus {
     outline: -webkit-focus-ring-color auto 0px;
 }
+
+.input{
+    border: none;
+    background: none;
+}
+.active {
+    color: #ff4136;
+}

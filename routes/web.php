@@ -35,8 +35,8 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::get('/', [FrontController::class, 'homepage']);
-Route::get('/categories', [FrontController::class, 'CategoriesView']);
-Route::get('/category/{slug}', [FrontController::class, 'CategoryView']);
+Route::get('/categories', [FrontController::class, 'CategoriesView'])->name('categories');
+Route::get('/category/{slug}', [FrontController::class, 'CategoryView'])->name('category');
 
 
 Route::get('/product/{slug}', [ProductsController::class, 'show']);

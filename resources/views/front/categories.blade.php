@@ -29,23 +29,23 @@
                     <div class="col-md-12">
                         <div class="filter__menu__container">
                             <div class="product__menu">
-                                <a href="/categories">All</a>
+                                <a href="/categories" class="{{ route('categories') == url()->current() ? 'active' : '' }}">All</a>
                                 @foreach($categories as $category)
-                                    <a href="/category/{{ $category->slug }}" style="margin-left: 20px">{{ $category->title }}</a>
+                                    <a href="/category/{{ $category->slug }}" style="margin-left: 20px" class="">{{ $category->title }}</a>
                                 @endforeach
                             </div>
                             <div style="display: flex; margin-bottom: 10px">
                                 <form action="/categories" style="margin-right: 20px">
-                                    <input type="submit" value="Price down" name="price_down">
+                                    <input type="submit" value="Price down" name="price_down" class="input">
                                 </form>
                                 <form action="/categories" style="margin-right: 20px">
-                                    <input type="submit" value="Price up" name="price_up">
+                                    <input type="submit" value="Price up" name="price_up" class="input">
                                 </form>
                                 <form action="/categories" style="margin-right: 20px">
-                                    <input type="submit" value="Recently added" name="new_date">
+                                    <input type="submit" value="Recently added" name="new_date" class="input">
                                 </form>
                                 <form action="/categories" style="margin-right: 20px">
-                                    <input type="submit" value="Oldest products" name="old_date">
+                                    <input type="submit" value="Oldest products" name="old_date" class="input">
                                 </form>
                             </div>
                             <div class="filter__box">
