@@ -35,17 +35,17 @@
                                 @endforeach
                             </div>
                             <div style="display: flex">
-                                <form action="/category/{{ $category->slug }}" style="margin-right: 20px">
-                                    <input type="submit" value="Price down" name="price_down" class="input">
+                                <form action="{{ route('category', $selected_category->slug) }}" style="margin-right: 20px">
+                                    <input type="submit" value="price" name="sort" class="input">
                                 </form>
-                                <form action="/category/{{ $category->slug }}" style="margin-right: 20px">
-                                    <input type="submit" value="Price up" name="price_up" class="input">
+                                <form action="{{ route('category', $selected_category->slug) }}" style="margin-right: 20px">
+                                    <input type="submit" value="-price" name="sort" class="input">
                                 </form>
-                                <form action="/category/{{ $category->slug }}" style="margin-right: 20px">
-                                    <input type="submit" value="Recently added" name="new_date" class="input">
+                                <form action="{{ route('category', $selected_category->slug) }}" style="margin-right: 20px">
+                                    <input type="submit" value="created_at" name="sort" class="input">
                                 </form>
-                                <form action="/category/{{ $category->slug }}" style="margin-right: 20px">
-                                    <input type="submit" value="Oldest products" name="old_date" class="input">
+                                <form action="{{ route('category', $selected_category->slug) }}" style="margin-right: 20px">
+                                    <input type="submit" value="-created_at" name="sort" class="input">
                                 </form>
                             </div>
                             <div class="filter__box">
@@ -68,11 +68,13 @@
                                         <h2>Sort By</h2>
                                         <ul class="filter__list">
                                             <li>
-                                                <form action="/category/{{ $category->slug }}" method="get">
-                                                    <input type="number" name="min_price" min="10" step="10" placeholder="{{ $min_price }}">
-                                                    <input type="number" name="max_price" min="10" step="10" placeholder="{{ $max_price }}">
-                                                    <input type="submit">
+                                                <form action="/category/{{ $selected_category->slug }}" method="get">
+                                                    <input type="number" name="min_price" min="10" step="10" placeholder="{{ $min_price }} Min price" class="form-control" style="margin-bottom: 10px">
+                                                    <input type="number" name="max_price" min="10" step="10" placeholder="{{ $max_price }} Max price" class="form-control" style="margin-bottom: 10px">
+                                                    <input type="submit" class="btn btn-primary">
                                                 </form>
+                                                <br>
+                                                <a class="btn btn-primary" href="{{ route('category', $selected_category->slug) }}">Отменить</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -93,7 +95,7 @@
                     <div class="product__list another-product-style">
                         <!-- Start Single Product -->
                         @foreach($products as $product)
-                            <div class="col-md-3 single__pro col-lg-3 cat--1 col-sm-4 col-xs-12 {{ $product->category }}">
+                            <div style="height: 400px" class="col-md-3 single__pro col-lg-3 cat--1 col-sm-4 col-xs-12 {{ $product->category }}">
                                 <div class="product foo">
                                     <div class="product__inner">
                                         <div class="pro__thumb">
@@ -119,8 +121,8 @@
                                     </div>
                                     <div class="product__details">
                                         <h2><a href="product-details.html">{{ $product->title }}</a></h2>
+                                        <h2>{{ $product->created_at }}</h2>
                                         <ul class="product__price">
-                                            <li class="old__price">$16.00</li>
                                             <li class="new__price">${{ $product->price }}</li>
                                         </ul>
                                     </div>

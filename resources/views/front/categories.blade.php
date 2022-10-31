@@ -36,16 +36,16 @@
                             </div>
                             <div style="display: flex; margin-bottom: 10px">
                                 <form action="/categories" style="margin-right: 20px">
-                                    <input type="submit" value="Price down" name="price_down" class="input">
+                                    <input type="submit" value="Price up" name="price_up" class="input">
                                 </form>
                                 <form action="/categories" style="margin-right: 20px">
-                                    <input type="submit" value="Price up" name="price_up" class="input">
+                                    <input type="submit" value="Price down" name="price_down" class="input">
                                 </form>
                                 <form action="/categories" style="margin-right: 20px">
                                     <input type="submit" value="Recently added" name="new_date" class="input">
                                 </form>
                                 <form action="/categories" style="margin-right: 20px">
-                                    <input type="submit" value="Oldest products" name="old_date" class="input">
+                                    <input type="submit" value="Previously added" name="old_date" class="input">
                                 </form>
                             </div>
                             <div class="filter__box">
@@ -65,13 +65,13 @@
                                 <!-- Start Single Content -->
                                 <div class="fiter__content__inner">
                                     <div class="single__filter">
-                                        <h2>Sort By</h2>
+                                        <h2>Sort By price</h2>
                                         <ul class="filter__list">
                                             <li>
                                                 <form action="/categories" method="get">
-                                                    <input type="number" name="min_price" min="10" step="10" placeholder="{{ $min_price }}">
-                                                    <input type="number" name="max_price" min="10" step="10" placeholder="{{ $max_price }}">
-                                                    <input type="submit">
+                                                    <input type="number" name="min_price" min="10" step="10" placeholder="{{ $min_price }} Min price" class="form-control" style="margin-bottom: 10px">
+                                                    <input type="number" name="max_price" min="10" step="10" placeholder="{{ $max_price }} Max price" class="form-control" style="margin-bottom: 10px">
+                                                    <input type="submit" class="btn btn-primary" value="Показать">
                                                 </form>
                                             </li>
                                         </ul>
@@ -120,7 +120,6 @@
                                 <div class="product__details">
                                     <h2><a href="product-details.html">{{ $product->title }}</a></h2>
                                     <ul class="product__price">
-                                        <li class="old__price">$16.00</li>
                                         <li class="new__price">${{ $product->price }}</li>
                                     </ul>
                                 </div>

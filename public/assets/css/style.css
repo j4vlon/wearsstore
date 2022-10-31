@@ -4154,6 +4154,7 @@ a.shipping-calculator-button:hover {
 .input{
     border: none;
     background: none;
+    outline: none;
 }
 .active {
     color: #ff4136;
